@@ -319,7 +319,7 @@ document.addEventListener("DOMContentLoaded", function () {
           const alertDiv = document.createElement("div");
           alertDiv.className = "alert alert-danger mt-3";
           alertDiv.textContent =
-            "Failed to send message. Please try again later or contact me directly at dmpanchal.201@gmail.com";
+            "Failed to send message. Please try again later or contact me directly at jatanmandaliya@gmail.com";
           contactForm.insertAdjacentElement("afterend", alertDiv);
 
           // Remove alert after 5 seconds
