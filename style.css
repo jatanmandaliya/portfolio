@@ -30,6 +30,7 @@ body {
   position: relative;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  padding-top: 80px;
 }
 
 /* Subtle background texture */
@@ -190,71 +191,135 @@ a:hover {
   opacity: 0.4;
 }
 
-/* Navbar - Minimal Professional */
+/* Navbar - Simple & Clean */
 .navbar {
-  background: rgba(10, 10, 10, 0.8);
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  width: 100%;
+  background: rgba(10, 10, 10, 0.95);
   backdrop-filter: blur(20px);
   -webkit-backdrop-filter: blur(20px);
   border-bottom: 1px solid rgba(255, 255, 255, 0.08);
-  box-shadow: none;
   padding: 1rem 0;
   transition: var(--transition);
   z-index: 1000;
 }
 
 .navbar.scrolled {
-  padding: 0.75rem 0;
-  background: rgba(10, 10, 10, 0.95);
-  border-bottom-color: rgba(255, 255, 255, 0.12);
+  background: rgba(0, 0, 0, 0.98);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
 }
 
 .navbar-brand {
   font-weight: 600;
-  font-size: 1.25rem;
+  font-size: 1.35rem;
   color: var(--text-light);
   letter-spacing: -0.02em;
 }
 
 .navbar-toggler {
-  border: none;
+  border: 1px solid rgba(255, 255, 255, 0.2);
   color: var(--text-light);
-  font-size: 1.5rem;
+  padding: 0.5rem 0.75rem;
+  border-radius: 4px;
+}
+
+.navbar-toggler:focus {
+  box-shadow: none;
 }
 
 .nav-link {
   font-weight: 400;
-  color: var(--text-gray);
+  color: #ffffff !important;
   margin: 0 0.5rem;
   padding: 0.5rem 0.75rem;
   position: relative;
   font-size: 0.95rem;
+  transition: var(--transition);
 }
 
 .nav-link::after {
   content: "";
   position: absolute;
   bottom: 0;
-  left: 50%;
-  transform: translateX(-50%);
+  left: 0;
   width: 0;
-  height: 1px;
-  background: var(--accent-color);
-  transition: var(--transition);
+  height: 2px;
+  background: #ffffff;
+  transition: width 0.3s ease;
 }
 
-.nav-link:hover::after,
+.nav-link.active {
+  color: #ffffff !important;
+}
+
 .nav-link.active::after {
   width: 100%;
 }
 
-.nav-link:hover,
-.nav-link.active {
-  color: var(--text-light);
+.nav-link:hover {
+  color: #ffffff !important;
+  opacity: 0.8;
+}
+
+/* Resume Download Button */
+.nav-link-btn {
+  display: inline-block;
+  padding: 0.5rem 1.25rem;
+  margin-left: 1rem;
+  background: rgba(255, 255, 255, 0.1);
+  color: #ffffff !important;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  border-radius: 6px;
+  font-size: 0.9rem;
+  font-weight: 500;
+  transition: var(--transition);
+  text-decoration: none;
+}
+
+.nav-link-btn:hover {
+  background: rgba(255, 255, 255, 0.2);
+  border-color: rgba(255, 255, 255, 0.5);
+  color: #ffffff !important;
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(255, 255, 255, 0.15);
+}
+
+.nav-link-btn i {
+  margin-right: 0.5rem;
+}
+
+/* Navbar container spacing */
+.navbar .container {
+  position: relative;
+}
+
+@media (max-width: 991.98px) {
+  .navbar-collapse {
+    margin-top: 1rem;
+    padding: 1rem;
+    background: rgba(15, 15, 15, 0.98);
+    border-radius: 8px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+  }
+  
+  .nav-link {
+    margin: 0.25rem 0;
+  }
+  
+  .nav-link-btn {
+    display: block;
+    width: 100%;
+    text-align: center;
+    margin: 0.75rem 0 0 0;
+  }
 }
 
 /* Hero Section - Clean Minimal */
 #hero {
-  padding-top: 180px;
+  padding-top: 120px;
   padding-bottom: 80px;
   position: relative;
   overflow: hidden;
@@ -491,7 +556,7 @@ a:hover {
 
 .project-card {
   background: var(--card-bg);
-  border-radius: 8px;
+  border-radius: 12px;
   overflow: hidden;
   box-shadow: var(--shadow);
   border: 1px solid var(--card-border);
@@ -499,6 +564,8 @@ a:hover {
   height: 100%;
   display: flex;
   flex-direction: column;
+  max-width: 900px;
+  margin: 0 auto;
 }
 
 .project-card:hover {
@@ -508,23 +575,26 @@ a:hover {
 }
 
 .project-img-container {
-  height: 300px;
+  height: 400px;
   width: 100%;
   overflow: hidden;
   border-bottom: 1px solid var(--card-border);
+  background: var(--bg-tertiary);
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .project-img {
   width: 100%;
   height: 100%;
-  object-fit: cover;
+  object-fit: contain;
   transition: var(--transition);
-  filter: grayscale(20%);
+  padding: 1rem;
 }
 
 .project-card:hover .project-img {
-  transform: scale(1.05);
-  filter: grayscale(0%);
+  transform: scale(1.03);
 }
 
 .project-info {
@@ -569,38 +639,52 @@ a:hover {
 /* Carousel Controls - Minimal */
 .carousel-control-prev,
 .carousel-control-next {
-  width: 40px;
-  height: 40px;
-  background: rgba(255, 255, 255, 0.1);
+  width: 50px;
+  height: 50px;
+  background: rgba(255, 255, 255, 0.15);
   border-radius: 50%;
   top: 50%;
   transform: translateY(-50%);
-  opacity: 0.7;
+  opacity: 0.8;
   backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  transition: var(--transition);
 }
 
 .carousel-control-prev:hover,
 .carousel-control-next:hover {
   opacity: 1;
-  background: rgba(255, 255, 255, 0.2);
+  background: rgba(255, 255, 255, 0.25);
+  border-color: rgba(255, 255, 255, 0.4);
+}
+
+.carousel-control-prev-icon,
+.carousel-control-next-icon {
+  filter: brightness(2);
 }
 
 .carousel-indicators {
   position: relative;
-  margin-top: 1rem;
+  margin-top: 1.5rem;
   margin-bottom: 0;
 }
 
 .carousel-indicators button {
-  width: 8px;
-  height: 8px;
+  width: 10px;
+  height: 10px;
   border-radius: 50%;
   background-color: rgba(255, 255, 255, 0.3);
   opacity: 1;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  margin: 0 5px;
+  transition: var(--transition);
 }
 
 .carousel-indicators button.active {
   background-color: var(--accent-color);
+  border-color: var(--accent-color);
+  width: 30px;
+  border-radius: 5px;
 }
 
 /* Skills Section - Clean Grid */
@@ -609,6 +693,11 @@ a:hover {
   z-index: 2;
   padding: 80px 0;
   background: var(--bg-secondary);
+  overflow: visible;
+}
+
+#skills .container {
+  overflow: visible;
 }
 
 .hexagon-grid {
@@ -618,6 +707,8 @@ a:hover {
   margin: 0 auto;
   max-width: 900px;
   gap: 1rem;
+  padding: 50px 20px;
+  overflow: visible;
 }
 
 /* Hexagon - Clean Minimal Style */
@@ -626,7 +717,7 @@ a:hover {
   width: 120px;
   height: 70px;
   background: var(--card-bg);
-  margin: 35px 10px;
+  margin: 45px 10px;
   box-shadow: var(--shadow);
   transition: var(--transition);
   cursor: pointer;
@@ -881,7 +972,7 @@ body.animating {
   .hexagon {
     width: 100px;
     height: 60px;
-    margin: 30px 8px;
+    margin: 40px 8px;
   }
 
   .hexagon:before {
