@@ -5,47 +5,44 @@ document.addEventListener("DOMContentLoaded", function () {
 
   // Hide preloader when page is loaded
   window.addEventListener("load", function () {
-    // Let the shimmer animation continue for a short while
     setTimeout(function () {
       preloader.classList.add("hidden");
-
-      // Remove preloader from DOM after transition completes
       setTimeout(function () {
         preloader.remove();
-      }, 600);
-    }, 2000);
+      }, 400);
+    }, 1500);
   });
 
   // Initialize AOS animation library
   if (typeof AOS !== "undefined") {
     AOS.init({
-      duration: 800,
-      easing: "ease-in-out",
+      duration: 600,
+      easing: "ease-out",
       once: true,
       mirror: false,
       offset: 50,
     });
   }
 
-  // Initialize particles background
+  // Initialize particles background - MINIMAL PROFESSIONAL
   if (typeof particlesJS !== "undefined") {
     particlesJS("particles-js", {
       particles: {
-        number: { value: 80, density: { enable: true, value_area: 800 } },
-        color: { value: "#8b5cf6" },
+        number: { value: 40, density: { enable: true, value_area: 800 } },
+        color: { value: "#ffffff" },
         shape: { type: "circle" },
-        opacity: { value: 0.5, random: true },
-        size: { value: 3, random: true },
+        opacity: { value: 0.2, random: true },
+        size: { value: 2, random: true },
         line_linked: {
           enable: true,
           distance: 150,
-          color: "#6366f1",
-          opacity: 0.4,
+          color: "#ffffff",
+          opacity: 0.15,
           width: 1,
         },
         move: {
           enable: true,
-          speed: 2,
+          speed: 1,
           direction: "none",
           random: true,
           straight: false,
@@ -61,7 +58,10 @@ document.addEventListener("DOMContentLoaded", function () {
           resize: true,
         },
         modes: {
-          grab: { distance: 140, line_linked: { opacity: 0.8 } },
+          grab: { 
+            distance: 120, 
+            line_linked: { opacity: 0.3 } 
+          },
         },
       },
       retina_detect: true,
@@ -70,12 +70,12 @@ document.addEventListener("DOMContentLoaded", function () {
 
   // Staggered animations for skills
   document.querySelectorAll(".hexagon").forEach((item, index) => {
-    item.setAttribute("data-aos-delay", (index * 50).toString());
+    item.setAttribute("data-aos-delay", (index * 40).toString());
   });
 
   // Staggered animations for expertise cards
   document.querySelectorAll(".expertise-card").forEach((card, index) => {
-    card.setAttribute("data-aos-delay", (index * 100).toString());
+    card.setAttribute("data-aos-delay", (index * 80).toString());
   });
 
   // Add counter animations for experience counters
@@ -157,21 +157,20 @@ document.addEventListener("DOMContentLoaded", function () {
       }
     });
 
-    // Create some additional parallax elements in the hero section
+    // Create minimal decorative elements in the hero section
     const heroSection = document.getElementById("hero");
     if (heroSection) {
-      // Create decorative circles
-      for (let i = 0; i < 5; i++) {
+      for (let i = 0; i < 3; i++) {
         const circle = document.createElement("div");
         circle.className = "decorative-circle parallax-element";
-        circle.style.width = `${Math.random() * 100 + 50}px`;
+        circle.style.width = `${Math.random() * 120 + 80}px`;
         circle.style.height = circle.style.width;
         circle.style.left = `${Math.random() * 100}%`;
         circle.style.top = `${Math.random() * 100}%`;
-        circle.style.opacity = `${Math.random() * 0.5}`;
+        circle.style.opacity = `${Math.random() * 0.2 + 0.05}`;
         circle.setAttribute(
           "data-speed",
-          (Math.random() * 0.4 - 0.2).toFixed(2)
+          (Math.random() * 0.3 - 0.15).toFixed(2)
         );
         heroSection.appendChild(circle);
       }
@@ -264,7 +263,7 @@ document.addEventListener("DOMContentLoaded", function () {
   // Initialize section revealing
   revealSections();
 
-  // Contact form submission to Google Sheets
+  // Contact form submission
   const contactForm = document.getElementById("contactForm");
   if (contactForm) {
     contactForm.addEventListener("submit", function (e) {
@@ -282,10 +281,8 @@ document.addEventListener("DOMContentLoaded", function () {
       submitBtn.textContent = "Sending...";
       submitBtn.disabled = true;
 
-      // IMPORTANT: Replace with your Google Sheet Web App URL
-      // You'll get this URL after deploying your Google Apps Script
+      // Replace with your Google Sheet Web App URL
       const scriptURL = "YOUR_SCRIPT_URL_HERE";
-      // Create form data object
       const formData = new FormData();
       formData.append("name", name);
       formData.append("email", email);
@@ -300,8 +297,8 @@ document.addEventListener("DOMContentLoaded", function () {
           // Display success message
           const alertDiv = document.createElement("div");
           alertDiv.className = "alert alert-success mt-3";
-          alertDiv.textContent =
-            "Message sent successfully! I'll get back to you soon.";
+          alertDiv.style.cssText = "padding: 1rem; background: rgba(37, 99, 235, 0.1); border: 1px solid rgba(37, 99, 235, 0.3); border-radius: 6px; color: #fff;";
+          alertDiv.textContent = "Message sent successfully! I'll get back to you soon.";
           contactForm.insertAdjacentElement("afterend", alertDiv);
 
           // Reset form
@@ -318,8 +315,8 @@ document.addEventListener("DOMContentLoaded", function () {
           // Display error message
           const alertDiv = document.createElement("div");
           alertDiv.className = "alert alert-danger mt-3";
-          alertDiv.textContent =
-            "Failed to send message. Please try again later or contact me directly at jatanmandaliya@gmail.com";
+          alertDiv.style.cssText = "padding: 1rem; background: rgba(239, 68, 68, 0.1); border: 1px solid rgba(239, 68, 68, 0.3); border-radius: 6px; color: #fff;";
+          alertDiv.textContent = "Failed to send message. Please contact me directly at jatanmandaliya@gmail.com";
           contactForm.insertAdjacentElement("afterend", alertDiv);
 
           // Remove alert after 5 seconds
@@ -355,14 +352,14 @@ document.addEventListener("DOMContentLoaded", function () {
     });
   }
 
-  // Add typing animation to hero title
+  // Add typing animation to hero title (optional - subtle)
   const heroTitle = document.querySelector(".hero-title");
   if (heroTitle) {
     const text = heroTitle.textContent;
     heroTitle.textContent = "";
 
     let i = 0;
-    const typingSpeed = 100; // milliseconds per character
+    const typingSpeed = 80;
 
     function typeWriter() {
       if (i < text.length) {
@@ -373,15 +370,14 @@ document.addEventListener("DOMContentLoaded", function () {
     }
 
     // Start typing animation after a slight delay
-    setTimeout(typeWriter, 1000);
+    setTimeout(typeWriter, 800);
   }
 
   // Add hover effects for skill items
   const hexagonItems = document.querySelectorAll(".hexagon");
   hexagonItems.forEach((item) => {
     item.addEventListener("mouseenter", function () {
-      this.style.transform = "translateY(-10px)";
-      this.style.transition = "all 0.3s ease";
+      this.style.transform = "translateY(-8px)";
     });
 
     item.addEventListener("mouseleave", function () {
