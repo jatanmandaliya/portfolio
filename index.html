@@ -86,6 +86,11 @@
             <li class="nav-item">
               <a class="nav-link" href="#contact">Contact</a>
             </li>
+            <li class="nav-item">
+              <a class="nav-link-btn" href="static/Resume.pdf" download>
+                <i class="fas fa-download"></i> Resume
+              </a>
+            </li>
           </ul>
         </div>
       </div>
@@ -153,16 +158,13 @@
             <!-- Experience Item 1 - Quantum Computing Inc -->
             <div class="timeline-item" data-aos="fade-up">
               <div class="timeline-left">
-                <span class="timeline-date">May 2025 - August 2025</span>
+                <span class="timeline-date">May 2025 - Present</span>
                 <span class="timeline-position">Hardware Engineer Intern</span>
               </div>
               <div class="timeline-content">
-                <h3 class="timeline-title">Quantum Computing Inc - Hoboken, NJ</h3>
+                <h3 class="timeline-title">Quantum Computing Inc - Heidelberg, NJ</h3>
                 <p class="timeline-text">
-                  Developed hardware for high-speed power measurement device using NXP iMXRT 1060 (ARM Cortex-M7), achieving 10 MSPS sampling to capture precise power consumption data in real time. 
-                  Built a DLL library in C/C++ to interface a parallel high-speed ADC, managing precise timers control, DMA, GPIO synchronization (DesOs), PCB design with safety isolation and EMI 
-                  filtering principles under RF-critical constraints. Designed and tested the front-end hardware from component selection to PCB design in Altium Designer, obeying current testing and 
-                  system-level debugging using oscilloscopes and logic analyzers, applied EMI-aware layout practices.
+                  Developed hardware for high-speed power measurement for a Quantum Entropy Computer using NXP iMXRT 1060 (ARM Cortex-M7), achieving 10 MSPS sampling to capture precise power consumption data in real time. Built a DLL library in C/C++ to interface a parallel high-speed ADC, managing precise timers control, DMA, GPIO synchronization (DesOs), PCB design with safety isolation and EMI filtering principles under RF-critical constraints. Designed and tested the front-end hardware from component selection to PCB design in Altium Designer, obeying current testing and system-level debugging using oscilloscopes and logic analyzers, applied EMI-aware layout practices.
                 </p>
               </div>
             </div>
@@ -411,6 +413,28 @@
                   </div>
                 </div>
               </div>
+              <!-- Project 5 - Custom RTOS -->
+              <div class="carousel-item">
+                <div class="project-card">
+                  <div class="project-img-container">
+                    <img
+                      src="static/image4.jpg"
+                      class="project-img"
+                      alt="Custom RTOS Project"
+                    />
+                  </div>
+                  <div class="project-info">
+                    <h3 class="project-title">Custom RTOS on STM32L476</h3>
+                    <p class="project-desc">
+                      Built a bare-metal ARM Cortex-M4 RTOS from scratch, including SysTick-based 
+                      task scheduling, context switching, synchronization, inter-task communication, 
+                      semaphores, interrupt handling, DMA and memory optimization. Designed a 
+                      priority-based pre-emptive scheduler supporting Round Robin, Cooperative, 
+                      and Periodic scheduling with integrated peripheral drivers and SWD debugging.
+                    </p>
+                  </div>
+                </div>
+              </div>
             </div>
             <button
               class="carousel-control-prev"
@@ -462,6 +486,12 @@
                 data-bs-target="#projectCarousel"
                 data-bs-slide-to="3"
                 aria-label="Slide 4"
+              ></button>
+              <button
+                type="button"
+                data-bs-target="#projectCarousel"
+                data-bs-slide-to="4"
+                aria-label="Slide 5"
               ></button>
             </div>
           </div>
@@ -688,7 +718,7 @@
           ></path>
         </svg>
       </div>
-    </section> 
+    </section> -->
 
     <!-- Contact Section -->
     <section id="contact" class="py-5">
